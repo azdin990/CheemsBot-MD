@@ -7,7 +7,7 @@
 //~Thank you to LORD BUDDHA, ME AND MY 
 //FAMILY.
 
-//[modules]\\
+//[الوحدات]\\
 require('./config')
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
 const fs = require('fs')
@@ -27,13 +27,13 @@ const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, 
 let { addLevelingId, addLevelingLevel, addLevelingXp, getLevelingId, getLevelingLevel, getLevelingXp } = require("./lib/lvlfunction")
 const speedofbot = require("performance-now")
 
-//[thumb]\\
+//[إبهام]\\
 let xeon = fs.readFileSync('./XeonMedia/cheemspic.jpg')
 
-//[database]\\
+//[قاعدة البيانات]\\
 const antilink = JSON.parse(fs.readFileSync('./database/antilink.json'))
 
-//[database reader]\\
+//[قارئ قاعدة البيانات]\\
 global.db = JSON.parse(fs.readFileSync('./src/database.json'))
 if (global.db) global.db = {
     sticker: {},
@@ -98,7 +98,7 @@ var sDisplay = s > 0 ? s + (s == 1 ? " second" : " Second") : "";
 return dDisplay + hDisplay + mDisplay + sDisplay;
 }
 	
-//[target]\\
+//[هدف]\\
 	const reply = (teks) => {
             XeonBotInc.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": ` ${global.botnma}`,"body": ` Join Bot's Official GC`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./XeonMedia/cheemspic.jpg`),"sourceUrl": "https://chat.whatsapp.com/HYj9wu5Jrv6CROxyeQbHoS"}}}, { quoted: m})
         }
@@ -147,32 +147,32 @@ try {
 	
 //[level(incomplete, still in devment)]\\
 const levelRole = getLevelingLevel(m.sender)
-	  var role = 'bronz'
+	  var role = 'البرونز'
 	  if (levelRole <= 3) {
-	role = 'Copper'
+	role = 'نحاس'
 	  } else if (levelRole <= 5) {
-	role = 'Iron'
+	role = 'حديد'
 	  } else if (levelRole <= 7) {
-	role = 'Silver'
+	role = 'فضة'
 	  } else if (levelRole <= 10) {
-	role = 'Gold'
+	role = 'ذهب'
 	  } else if (levelRole <= 12) {
-	role = 'Platinum'
+	role = 'البلاتين'
 	  } else if (levelRole <= 15) {
-	role = 'Mithril'
+	role = 'ميثريل'
 	  } else if (levelRole <= 18) {
-	role = 'Orichalcum'
+	role = 'أوريكالكوم'
 	  } else if (levelRole <= 25) {
-	role = 'Adamantite'
+	role = 'آدمانتيت'
 	  } else if (levelRole <= 45) {
-	role = 'Good In Game'
+	role = 'جيد في اللعبة'
 	  }
 	
-//[Antilink]\\
+//[أنتلينك]\\
 	if (isAntiLink) 
 if (budy.includes('https://chat.whatsapp.com/')) {
                if (!m.key.fromMe) {
-               reply('*LINK DETECTED*\nWow, how naughty, this group has been installed with Antilink, OK?..,\nGood Bye To You..👋🏻')
+               reply('*تم اكتشاف الارتباط*\nرائع, كم هو شقي, تم تثبيت هذه المجموعة مع أنتلينك, نعم?..,\n..👋🏻وداعا لك')
                let sianj = m.sender
                await XeonBotInc.groupParticipantsUpdate(m.chat, [sianj], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
                }
@@ -190,16 +190,16 @@ if (budy.includes('https://chat.whatsapp.com/')) {
         XeonBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
         }
         }
-//[mute chat]\\
+//[الدردشة الصامتة]\\
       if (db.chats[m.chat].mute && !isAdmins && !isCreator) {
       return
       }
-//[write database every 1min]\\
+//[كتابة قاعدة البيانات كل 1 دقيقة]\\
 	setInterval(() => {
             fs.writeFileSync('./src/database.json', JSON.stringify(global.db, null, 2))
         }, 60 * 1000)
 
-//[reset limit every 12hrs]\\
+//[إعادة تعيين الحد كل 12 ساعة]\\
         let cron = require('node-cron')
         cron.schedule('00 12 * * *', () => {
             let user = Object.keys(global.db.users)
@@ -211,7 +211,7 @@ if (budy.includes('https://chat.whatsapp.com/')) {
             timezone: "Asia/Kolkata"
         })
 	    
-//[respond cmd with media]\\
+//[تستجيب كمد بوسائل الإعلام]\\
         if (isMedia && m.msg.fileSha256 && (m.msg.fileSha256.toString('base64') in global.db.sticker)) {
         let hash = global.db.sticker[m.msg.fileSha256.toString('base64')]
         let { text, mentionedJid } = hash
@@ -243,12 +243,12 @@ if (budy.includes('https://chat.whatsapp.com/')) {
             }
             let isWin = room.terjawab.length === room.terjawab.filter(v => v).length
             let caption = `
-Answer the following questions :\n${room.soal}\n\n\nThere is ${room.jawaban.length} Answer ${room.jawaban.find(v => v.includes(' ')) ? `(some answers have spaces)` : ''}
+Answer the following questions :\n${room.soal}\n\n\nهنالك ${room.jawaban.length} Answer ${room.jawaban.find(v => v.includes(' ')) ? `(بعض الإجابات لها مسافات)` : ''}
 ${isWin ? `All Answers Answered` : isSurender ? 'Give up!' : ''}
 ${Array.from(room.jawaban, (jawaban, index) => {
         return isSurender || room.terjawab[index] ? `(${index + 1}) ${jawaban} ${room.terjawab[index] ? '@' + room.terjawab[index].split('@')[0] : ''}`.trim() : false
     }).filter(v => v).join('\n')}
-    ${isSurender ? '' : `Perfect Player`}`.trim()
+    ${isSurender ? '' : `لاعب مثالي`}`.trim()
             XeonBotInc.sendText(m.chat, caption, m, { contextInfo: { mentionedJid: parseMention(caption) }}).then(mes => { return _family100['family100'+m.chat].pesan = mesg }).catch(_ => _)
             if (isWin || isSurender) delete _family100['family100'+m.chat]
         }
@@ -257,34 +257,34 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             kuis = true
             jawaban = tebaklagu[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak lagu', buttonText: { displayText: 'Guess The Music' }, type: 1 }], `🎮 Guess The Song 🎮\n\nCorrect Answer 🎉\n\nWant to play again? press the button below`, XeonBotInc.user.name, m)
+                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak lagu', buttonText: { displayText: 'تخمين الموسيقى' }, type: 1 }], `🎮 تخمين الأغنية 🎮\n\n🎉اجابة صحيحة\n\nتريد أن تلعب مرة أخرى? اضغط على الزر أدناه`, XeonBotInc.user.name, m)
                 delete tebaklagu[m.sender.split('@')[0]]
-            } else reply('*Wrong answer!*')
+            } else reply('*إجابة خاطئة!*')
         }
 
         if (kuismath.hasOwnProperty(m.sender.split('@')[0]) && isCmd) {
             kuis = true
             jawaban = kuismath[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await reply(`🎮 Math Quiz  🎮\n\nCorrect answer 🎉\n\nWant to play again? Send ${prefix}math mode`)
+                await reply(`🎮 اختبار الرياضيات 🎮  🎮\n\n🎉اجابة صحيحة\n\nتريد أن تلعب مرة أخرى? يرسل ${prefix}وضع الرياضيات`)
                 delete kuismath[m.sender.split('@')[0]]
-            } else reply('*Wrong Answer!*')
+            } else reply('*إجابة خاطئة!*')
         }
 
         if (tebakgambar.hasOwnProperty(m.sender.split('@')[0]) && isCmd) {
             kuis = true
             jawaban = tebakgambar[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak gambar', buttonText: { displayText: 'Guess The Picture' }, type: 1 }], `🎮 Guess The Picture 🎮\n\nCorrect answer 🎉\n\nWant to play again? press the button below`, XeonBotInc.user.name, m)
+                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak gambar', buttonText: { displayText: 'تخمين الصورة' }, type: 1 }], `🎮 تخمين الصورة 🎮\n\n🎉اجابة صحيحة\n\nتريد أن تلعب مرة أخرى? اضغط على الزر أدناه`, XeonBotInc.user.name, m)
                 delete tebakgambar[m.sender.split('@')[0]]
-            } else reply('*Wrong Answer!*')
+            } else reply('*إجابة خاطئة!*')
         }
 
         if (tebakkata.hasOwnProperty(m.sender.split('@')[0]) && isCmd) {
             kuis = true
             jawaban = tebakkata[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak kata', buttonText: { displayText: 'Guess The Word' }, type: 1 }], `🎮 Guess The Word 🎮\n\nCorrect answer 🎉\n\nWant to play again? press the button below`, XeonBotInc.user.name, m)
+                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak kata', buttonText: { displayText: 'Guess The Word' }, type: 1 }], `🎮 Guess The Word 🎮\n\n 🎉اجابة صحيحة\n\nتريد أن تلعب مرة أخرى? اضغط على الزر أدناه`, XeonBotInc.user.name, m)
                 delete tebakkata[m.sender.split('@')[0]]
             } else reply('*Wrong Answer!*')
         }
@@ -297,7 +297,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
                 await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak lontong', buttonText: { displayText: 'Guess Lontong' }, type: 1 }], `🎮 Guess Lontong 🎮\n\nCorrect answer 🎉\n*${deskripsi}*\n\nWant to play again? press the button below`, XeonBotInc.user.name, m)
                 delete caklontong[m.sender.split('@')[0]]
 		delete caklontong_desk[m.sender.split('@')[0]]
-            } else reply('*Wrong Answer!*')
+            } else reply('*إجابة خاطئة!*')
         }
 
         if (tebakkalimat.hasOwnProperty(m.sender.split('@')[0]) && isCmd) {
@@ -2371,12 +2371,12 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                     	if(!text) throw `Enter The Bug Example\n\n${command} Menu Error `
                     	XeonBotInc.sendMessage(`916909137213@s.whatsapp.net`, {text: `*Bug Report From:* wa.me/${m.sender.split("@")[0]}
 Report Message: ${text}` })
-reply(`Successfully Reported To The Owner\n\nPlease Make Sure The Bug Is Valid, If You Play With This, Use This Feature Again And Again For No Reason, You Will Be Blocked For Sure !`)
+reply(`تم الإبلاغ بنجاح إلى المطور\n\nيرجى التأكد من صحة الخطأ, If You Play With This, Use This Feature Again And Again For No Reason, You Will Be Blocked For Sure !`)
                     }
                     break 
 case 'tes': case 'test': case 'alive': case 'bot': case 'robot': case 'cheems': case 'doge':{
-                anu = `Hi ${pushname}
-Cheems Bot With You Forever!! 🐶🤚`
+                anu = `أهلاً ${pushname}
+!! 💮🤚نيزوكو بوت معك للأبد`
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
                         hydratedTemplate: {
@@ -2391,22 +2391,22 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                                 }
                             }, {
                             	urlButton: {
-                                displayText: 'Script🔖',
-                                    url: 'https://github.com/DGXeon/CheemsBot-MD'
+                                displayText: 'انستغرام🔖',
+                                    url: 'https://instagram.com/azdi_n_1?=nametag'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '🍇All Menu🍇',
+                                    displayText: '🍇كل القائمة🍇',
                                     id: `${prefix}allmenu`
                                 }
                                 }, {
                                 quickReplyButton: {
-                                    displayText: '🍒List Menu🍒',
+                                    displayText: '🍒قائمة القائمة🍒',
                                     id: `${prefix}command`
                                 }
                                 }, {
                                 quickReplyButton: {
-                                    displayText: '👤Owner👤',
+                                    displayText: '👤المطور👤',
                                     id: `${prefix}owner`
                                 }
                             }]
@@ -2427,8 +2427,8 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             hydratedContentText: anu,
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
-                            hydratedFooterText: `Hi 🤚 ${pushname}
-How Are You? 😊
+                            hydratedFooterText: `🤚أهلاً ${pushname}
+!كيف حالك
 
 
 ❏「 INFO BOT 」
@@ -2621,7 +2621,7 @@ case 'grupmenu': {
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '👤Owner👤',
+                                    displayText: '👤المطور👤',
                                     id: `${prefix}owner`
                                 }
                             }]
@@ -2663,7 +2663,7 @@ case 'downloadmenu': {
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '👤Owner👤',
+                                    displayText: '👤المطور👤',
                                     id: `${prefix}owner`
                                 }
                             }]
@@ -2700,7 +2700,7 @@ case 'downloadmenu': {
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '👤Owner👤',
+                                    displayText: '👤المطور👤',
                                     id: `${prefix}owner`
                                 }
                             }]
@@ -2731,7 +2731,7 @@ case 'randommenu': {
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '👤Owner👤',
+                                    displayText: '👤المطور👤',
                                     id: `${prefix}owner`
                                 }
                             }]
@@ -2763,7 +2763,7 @@ case 'funmenu': {
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '👤Owner👤',
+                                    displayText: '👤المطور👤',
                                     id: `${prefix}owner`
                                 }
                             }]
@@ -2803,7 +2803,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '👤Owner👤',
+                                    displayText: '👤المطور👤',
                                     id: `${prefix}owner`
                                 }
                             }]
@@ -2837,7 +2837,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '👤Owner👤',
+                                    displayText: '👤المطور👤',
                                     id: `${prefix}owner`
                                 }
                             }]
@@ -2895,7 +2895,7 @@ case 'horoscopemenukcodk': {
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '👤Owner👤',
+                                    displayText: '👤المطور👤',
                                     id: `${prefix}owner`
                                 }
                             }]
@@ -2933,7 +2933,7 @@ case 'convertmenu': {
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '👤Owner👤',
+                                    displayText: '👤المطور👤',
                                     id: `${prefix}owner`
                                 }
                             }]
@@ -2973,7 +2973,7 @@ case 'nocategorymenu': {
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '👤Owner👤',
+                                    displayText: '👤المطور👤',
                                     id: `${prefix}owner`
                                 }
                             }]
@@ -2985,7 +2985,7 @@ case 'nocategorymenu': {
 break
 case 'databasemenu': {
 	anu = `
-	*Database Menu*
+	*قائمة قاعدة البيانات*
   
   ➙ ${prefix}setcmd
   ➙ ${prefix}listcmd
@@ -3010,7 +3010,7 @@ case 'databasemenu': {
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '👤Owner👤',
+                                    displayText: '👤المطور👤',
                                     id: `${prefix}owner`
                                 }
                             }]
@@ -3022,7 +3022,7 @@ case 'databasemenu': {
 break
 case 'anonymouschatmenu': {
 	anu = `
-	*Anonymous Menu*
+	*قائمة مجهولة*
 	
   ➙ ${prefix}start ( Start Chat )
   ➙ ${prefix}next ( Next user )
@@ -3054,7 +3054,7 @@ case 'anonymouschatmenu': {
 break
 case 'sistemmenu': {
 	anu = `
-	*System Menu*
+	*قائمة النظام*
 	
   ➙ ${prefix}antilink On/Off
   ➙ ${prefix}mute On/Off
@@ -3074,7 +3074,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '👤Owner👤',
+                                    displayText: '👤المطور👤',
                                     id: `${prefix}owner`
                                 }
                             }]
@@ -3086,14 +3086,14 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 break
   case 'ownermenu': {
   	anu = `
-  *Owner Menu*
+  *قائمة المطور*
   
-  ➙ ${prefix}chat [option]
-  ➙ ${prefix}join [link]
+  ➙ ${prefix}chat [اختيار]
+  ➙ ${prefix}join [رابط]
   ➙ ${prefix}leave
   ➙ ${prefix}setbotpp
-  ➙ ${prefix}block @user
-  ➙ ${prefix}unblock @user
+  ➙ ${prefix}block @المستعمل
+  ➙ ${prefix}unblock @المستعمل
   ➙ ${prefix}bcgroup
   ➙ ${prefix}bcall
   `
@@ -3103,15 +3103,15 @@ break
                             hydratedContentText: anu,
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
-                            hydratedFooterText: `Cheems Bot-MD`,
+                            hydratedFooterText: `~NIZOKO:BOT`,
                             hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/imFIX-Wrt3s'
+                                    url: 'https://youtube.com/channel/UCv7mGqNpB-pI3W7VKSut7QQ'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '👤Owner👤',
+                                    displayText: '👤المطور👤',
                                     id: `${prefix}owner`
                                 }
                             }]
@@ -3123,56 +3123,56 @@ break
 break
   case 'allmenu': {
   	anu = `
-  *All Menu*
+  *كل القائمة*
   
-  ꪶ🐕Group Menu🐕ꫂ
+  ꪶ💮قائمة المجموعة💮ꫂ
   ➙ ${prefix}grouplink
-  ➙ ${prefix}ephemeral [option]
+  ➙ ${prefix}ephemeral [اختيار]
   ➙ ${prefix}setgrouppp
-  ➙ ${prefix}setname [text]
-  ➙ ${prefix}group [option]
-  ➙ ${prefix}editinfo [option]
+  ➙ ${prefix}setname [نص]
+  ➙ ${prefix}group [اختيار]
+  ➙ ${prefix}editinfo [اختيار]
   ➙ ${prefix}grupinfo
-  ➙ ${prefix}add @user
-  ➙ ${prefix}kick @user
-  ➙ ${prefix}promote @user
-  ➙ ${prefix}demote @user
+  ➙ ${prefix}add @المستعمل
+  ➙ ${prefix}kick @المستعمل
+  ➙ ${prefix}promote @المستعمل
+  ➙ ${prefix}demote @المستعمل
   
-  ꪶ🐕Download Menu🐕ꫂ
-  ➙ ${prefix}tiktoknowm [url]
-  ➙ ${prefix}tiktokwm [url]
-  ➙ ${prefix}tiktokmp3 [url]
-  ➙ ${prefix}instagram [url]
-  ➙ ${prefix}ig2 [url]
-  ➙ ${prefix}igreels [url]
-  ➙ ${prefix}igtv [url]
-  ➙ ${prefix}twitter [url]
-  ➙ ${prefix}twittermp3 [url]
-  ➙ ${prefix}ytmp3 [url]
-  ➙ ${prefix}ytmp4 [url]
-  ➙ ${prefix}getmusic [query]
-  ➙ ${prefix}getvideo [query
+  ꪶ💮قائمة التنزيل💮ꫂ
+  ➙ ${prefix}tiktoknowm [رابط]
+  ➙ ${prefix}tiktokwm [رابط]
+  ➙ ${prefix}tiktokmp3 [رابط]
+  ➙ ${prefix}instagram [رابط]
+  ➙ ${prefix}ig2 [رابط]
+  ➙ ${prefix}igreels [رابط]
+  ➙ ${prefix}igtv [رابط]
+  ➙ ${prefix}twitter [رابط]
+  ➙ ${prefix}twittermp3 [رابط]
+  ➙ ${prefix}ytmp3 [رابط]
+  ➙ ${prefix}ytmp4 [رابط]
+  ➙ ${prefix}getmusic [استفسار]
+  ➙ ${prefix}getvideo [استفسار
   
-  ꪶ🐕Search Menu🐕ꫂ
-  ➙ ${prefix}play [query]
-  ➙ ${prefix}yts [query]
-  ➙ ${prefix}google [query]
-  ➙ ${prefix}gimage [query]
-  ➙ ${prefix}pinterest [query]
-  ➙ ${prefix}wallpaper [query]
-  ➙ ${prefix}wikimedia [query]
-  ➙ ${prefix}ytsearch [query]
+  ꪶ💮قائمة البحث💮ꫂ
+  ➙ ${prefix}play [استفسار]
+  ➙ ${prefix}yts [استفسار]
+  ➙ ${prefix}google [استفسار]
+  ➙ ${prefix}gimage [استفسار]
+  ➙ ${prefix}pinterest [استفسار]
+  ➙ ${prefix}wallpaper [استفسار]
+  ➙ ${prefix}wikimedia [استفسار]
+  ➙ ${prefix}ytsearch [استفسار]
   
-  ꪶ🐕Random Menu🐕ꫂ
+  ꪶ💮قائمة عشوائية💮ꫂ
   ➙ ${prefix}coffee
   ➙ ${prefix}couplepp
   
-  ꪶ🐕Fun Menu🐕ꫂ
+  ꪶ💮قائمة المرح💮ꫂ
   ➙ ${prefix}couple
   ➙ ${prefix}mysoulmate
-  ➙ ${prefix}math [mode]  
+  ➙ ${prefix}math [الوضع]  
   
-  ꪶ🐕Voice Changer Menu🐕ꫂ
+  ꪶ💮قائمة مغير الصوت💮ꫂ
   ➙ ${prefix}bass
   ➙ ${prefix}blown
   ➙ ${prefix}deep
@@ -3185,7 +3185,7 @@ break
   ➙ ${prefix}slow
   ➙ ${prefix}squirrel
    
-  ꪶ🐕Convert Menu🐕ꫂ
+  ꪶ💮تحويل القائمة💮ꫂ
   ➙ ${prefix}toimage
   ➙ ${prefix}removebg
   ➙ ${prefix}sticker
@@ -3196,7 +3196,7 @@ break
   ➙ ${prefix}ebinary
   ➙ ${prefix}dbinary
   
-  ꪶ🐕Misc Menu🐕ꫂ
+  ꪶ💮قائمة متنوعة💮ꫂ
   ➙ ${prefix}ping
   ➙ ${prefix}owner
   ➙ ${prefix}donate
@@ -3207,9 +3207,9 @@ break
   ➙ ${prefix}listpc
   ➙ ${prefix}listgc
   ➙ ${prefix}listonline
-  ➙ ${prefix}report (report bug to owner)
+  ➙ ${prefix}report (إذا توجه مشكيل اكتب report. واكتب مشكيل التي تعني منه )
   
-  ꪶ🐕Database Menu🐕ꫂ
+  ꪶ💮قائمة قاعدة البيانات💮ꫂ
   ➙ ${prefix}setcmd
   ➙ ${prefix}listcmd
   ➙ ${prefix}delcmd
@@ -3219,23 +3219,23 @@ break
   ➙ ${prefix}getmsg
   ➙ ${prefix}delmsg
   
-  ꪶ🐕Anonymous Menu🐕ꫂ
+  ꪶ💮قائمة مجهولة💮ꫂ
   ➙ ${prefix}start ( Start Chat )
   ➙ ${prefix}next ( Next user )
   ➙ ${prefix}stop ( stop Anonymous chat )
   
-  ꪶ🐕System Menu🐕ꫂ
+  ꪶ💮قائمة النظام💮ꫂ
   ➙ ${prefix}antilink On/Off
   ➙ ${prefix}mute On/Off
   ➙ ${prefix}antiwame On/Off
   
-  ꪶ🐕Owner Menu🐕ꫂ
-  ➙ ${prefix}chat [option]
-  ➙ ${prefix}join [link]
+  ꪶ💮قائمة المطور💮ꫂ
+  ➙ ${prefix}chat [اختيار]
+  ➙ ${prefix}join [رابط مجموعة]
   ➙ ${prefix}leave
   ➙ ${prefix}setbotpp
-  ➙ ${prefix}block @user
-  ➙ ${prefix}unblock @user
+  ➙ ${prefix}block @المستعمل
+  ➙ ${prefix}unblock @المستعمل
   ➙ ${prefix}bcgroup
   ➙ ${prefix}bcall`
     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
@@ -3244,15 +3244,15 @@ break
                             hydratedContentText: anu,
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
-                            hydratedFooterText: `Cheems Bot-MD`,
+                            hydratedFooterText: `NIZOKO:BOT`,
                             hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/imFIX-Wrt3s'
+                                    url: 'https://youtube.com/channel/UCv7mGqNpB-pI3W7VKSut7QQ'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '👤Owner👤',
+                                    displayText: '👤المطور👤',
                                     id: `${prefix}owner`
                                 }
                             }]
