@@ -7,7 +7,7 @@
 //~Thank you to LORD BUDDHA, ME AND MY 
 //FAMILY.
 
-//[الوحدات]\\
+//[modules]\\
 require('./config')
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
 const fs = require('fs')
