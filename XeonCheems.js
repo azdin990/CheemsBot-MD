@@ -284,7 +284,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             kuis = true
             jawaban = tebakkata[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak kata', buttonText: { displayText: 'Guess The Word' }, type: 1 }], `🎮 Guess The Word 🎮\n\n 🎉اجابة صحيحة\n\nتريد أن تلعب مرة أخرى? اضغط على الزر أدناه`, XeonBotInc.user.name, m)
+                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak kata', buttonText: { displayText: 'Guess The Word' }, type: 1 }], `🎮 خمن الكلمة 🎮\n\n 🎉اجابة صحيحة\n\nتريد أن تلعب مرة أخرى? اضغط على الزر أدناه`, XeonBotInc.user.name, m)
                 delete tebakkata[m.sender.split('@')[0]]
             } else reply('*Wrong Answer!*')
         }
@@ -294,7 +294,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             jawaban = caklontong[m.sender.split('@')[0]]
 	    deskripsi = caklontong_desk[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak lontong', buttonText: { displayText: 'Guess Lontong' }, type: 1 }], `🎮 Guess Lontong 🎮\n\nCorrect answer 🎉\n*${deskripsi}*\n\nWant to play again? press the button below`, XeonBotInc.user.name, m)
+                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak lontong', buttonText: { displayText: 'Guess Lontong' }, type: 1 }], `🎮 جيس لونتونج 🎮\n\n🎉اجابة صحيحة\n*${deskripsi}*\n\nتريد أن تلعب مرة أخرى؟ اضغط على الزر أدناه`, XeonBotInc.user.name, m)
                 delete caklontong[m.sender.split('@')[0]]
 		delete caklontong_desk[m.sender.split('@')[0]]
             } else reply('*إجابة خاطئة!*')
@@ -304,7 +304,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             kuis = true
             jawaban = tebakkalimat[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak kalimat', buttonText: { displayText: 'Guess The Sentence' }, type: 1 }], `🎮 Guess The Sentence 🎮\n\nCorrect answer 🎉\n\nWant to play again? press the button below`, XeonBotInc.user.name, m)
+                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak kalimat', buttonText: { displayText: 'Guess The Sentence' }, type: 1 }], `🎮 تخمين الجملة 🎮\n\nاجابة صحيحة\n\nWant to play again? press the button below`, XeonBotInc.user.name, m)
                 delete tebakkalimat[m.sender.split('@')[0]]
             } else reply('*Wrong Answer!*')
         }
@@ -313,7 +313,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             kuis = true
             jawaban = tebaklirik[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak lirik', buttonText: { displayText: 'Guess The Lyrics' }, type: 1 }], `🎮 Guess The Lyrics 🎮\n\nCorrect answer 🎉\n\nWant to play again? press the button below`, XeonBotInc.user.name, m)
+                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak lirik', buttonText: { displayText: 'Guess The Lyrics' }, type: 1 }], `🎮 تخمين الأغاني 🎮\n\nCorrect answer 🎉\n\nWant to play again? press the button below`, XeonBotInc.user.name, m)
                 delete tebaklirik[m.sender.split('@')[0]]
             } else reply('*Wrong Answer!*')
         }
@@ -886,9 +886,9 @@ break
                 if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
-let teks = `══✪〘 *👥 Tag All* 〙✪══
+let teks = `══✪〘 *👥 وضع علامة على الكل* 〙✪══
  
- ➲ *Message : ${q ? q : 'blank'}*\n\n`
+ ➲ *رسالة : ${q ? q : 'blank'}*\n\n`
                 for (let mem of participants) {
                 teks += `⭔ @${mem.id.split('@')[0]}\n`
                 }
@@ -925,23 +925,23 @@ let teks = `══✪〘 *👥 Tag All* 〙✪══
             devote = vote[m.chat][2]
             teks_vote = `*「 VOTE 」*
 
-*Reason:* ${vote[m.chat][0]}
+*سبب:* ${vote[m.chat][0]}
 
-┌〔 UPVOTE 〕
+┌〔 التصويت 〕
  
 ├ Total: ${vote[m.chat][1].length}
 
  
 └────
 
-┌〔 DEVOTE 〕
+┌〔 ديفو 〕
  
-├ Total: ${vote[m.chat][2].length}
+├ المجموع: ${vote[m.chat][2].length}
 
  
 └────
 
-*${prefix}deletevote* - to delete votes`
+*${prefix}deletevote* - لحذف الأصوات`
 let buttonsVote = [
   {buttonId: `${prefix}upvote`, buttonText: {displayText: '👍🏻Up-Vote👍🏻'}, type: 1},
   {buttonId: `${prefix}devote`, buttonText: {displayText: '👎🏻De-Vote👎🏻'}, type: 1}
@@ -966,23 +966,23 @@ let buttonsVote = [
             menvote = vote[m.chat][1].concat(vote[m.chat][2])
             teks_vote = `*「 VOTE 」*
 
-*Reason:* ${vote[m.chat][0]}
+*سبب:* ${vote[m.chat][0]}
 
-┌〔 UPVOTE 〕
+┌〔 التصويت 〕
  
 ├ Total: ${vote[m.chat][1].length}
 ${vote[m.chat][1].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
  
 └────
 
-┌〔 DEVOTE 〕
+┌〔 ديفو 〕
  
 ├ Total: ${vote[m.chat][2].length}
 ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
  
 └────
 
-*${prefix}hapusvote* - to delete votes`
+*${prefix}hapusvote* - لحذف الأصوات`
             let buttonsUpvote = [
               {buttonId: `${prefix}upvote`, buttonText: {displayText: '👍🏻Up-Vote👍🏻'}, type: 1},
               {buttonId: `${prefix}devote`, buttonText: {displayText: '👎🏻De-Vote👎🏻'}, type: 1}
@@ -2371,7 +2371,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                     	if(!text) throw `Enter The Bug Example\n\n${command} Menu Error `
                     	XeonBotInc.sendMessage(`916909137213@s.whatsapp.net`, {text: `*Bug Report From:* wa.me/${m.sender.split("@")[0]}
 Report Message: ${text}` })
-reply(`تم الإبلاغ بنجاح إلى المطور\n\nيرجى التأكد من صحة الخطأ, If You Play With This, Use This Feature Again And Again For No Reason, You Will Be Blocked For Sure !`)
+reply(`تم الإبلاغ بنجاح إلى المطور\n\nيرجى التأكد من صحة الخطأ, إذا كنت تلعب مع هذا, استخدم هذه الميزة مرارًا وتكرارًا بدون سبب, سيتم حظرك بالتأكيد !`)
                     }
                     break 
 case 'tes': case 'test': case 'alive': case 'bot': case 'robot': case 'cheems': case 'doge':{
@@ -2383,11 +2383,11 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             hydratedContentText: anu,
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
-                            hydratedFooterText: `Cheems Bot-MD`,
+                            hydratedFooterText: `NIZOKO-BOT`,
                             hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/imFIX-Wrt3s'
+                                    url: 'https://youtube.com/channel/UCv7mGqNpB-pI3W7VKSut7QQ'
                                 }
                             }, {
                             	urlButton: {
@@ -2431,7 +2431,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 !كيف حالك
 
 
-❏「 INFO BOT 」
+❏「 معلومات بوت 」
 
 𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
 𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
@@ -2451,22 +2451,22 @@ Please Select Button Below
                                 }
                             }, {
                             	urlButton: {
-                                displayText: 'Script🔖',
-                                    url: 'https://github.com/DGXeon/CheemsBot-MD'
+                                displayText: '💮انستغرام💮',
+                                    url: 'https://instagram.com/azdi_n_1?=nametag'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '🍇All Menu🍇',
+                                    displayText: '🍇كل القائمة🍇',
                                     id: `${prefix}allmenu`
                                 }
                                 }, {
                                 quickReplyButton: {
-                                    displayText: '🍒List Menu🍒',
+                                    displayText: '🍒قائمة أمر🍒',
                                     id: `${prefix}command`
                                 }
                                 }, {
                                 quickReplyButton: {
-                                    displayText: '👤Owner👤',
+                                    displayText: '👤المطور👤',
                                     id: `${prefix}owner`
                                 }
                             }]
@@ -2479,10 +2479,10 @@ break
 case 'command':{
 let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 listMessage :{
-                    title: `Hi ${pushname}`,
-                    description: `Please Choose The Menu\n\n`,
+                    title: `أهلاً ${pushname}`,
+                    description: `الرجاء اختيار القائمة\n\n`,
                     buttonText: "Menu",
-                    footerText: "_Cheems Bot-MD_",
+                    footerText: "_NIZOKO-BOT_",
                     listType: "SINGLE_SELECT",
                     sections: [{
 								"title": "Group Features",
@@ -2593,19 +2593,19 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
             break
 case 'grupmenu': {
 	            anu = `
-  *Group Menu*
+  *قائمة المجموعة*
   
   ➙ ${prefix}grouplink
-  ➙ ${prefix}ephemeral [option]
+  ➙ ${prefix}ephemeral [اختيار]
   ➙ ${prefix}setgrouppp
-  ➙ ${prefix}setname [text]
-  ➙ ${prefix}group [option]
-  ➙ ${prefix}editinfo [option]
+  ➙ ${prefix}setname [نص]
+  ➙ ${prefix}group [اختيار]
+  ➙ ${prefix}editinfo [اختيار]
   ➙ ${prefix}grupinfo
-  ➙ ${prefix}add @user
-  ➙ ${prefix}kick @user
-  ➙ ${prefix}promote @user
-  ➙ ${prefix}demote @user
+  ➙ ${prefix}add @المستعمل
+  ➙ ${prefix}kick @المستعمل
+  ➙ ${prefix}promote @المستعمل
+  ➙ ${prefix}demote @المستعمل
   `
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
@@ -2613,11 +2613,11 @@ case 'grupmenu': {
                             hydratedContentText: anu,
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
-                            hydratedFooterText: `Cheems Bot-MD`,
+                            hydratedFooterText: `NIZOKO-BOT`,
                             hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/imFIX-Wrt3s'
+                                    url: 'https://youtube.com/channel/UCv7mGqNpB-pI3W7VKSut7QQ'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -2633,21 +2633,21 @@ case 'grupmenu': {
 break
 case 'downloadmenu': {
 	okemenu = `
-	*Downloader Menu*
+	*قائمة التنزيل*
   
-  ➙ ${prefix}tiktoknowm [url]
-  ➙ ${prefix}tiktokwm [url]
-  ➙ ${prefix}tiktokmp3 [url]
-  ➙ ${prefix}instagram [url]
-  ➙ ${prefix}ig2 [url]
-  ➙ ${prefix}igreels [url]
-  ➙ ${prefix}igtv [url]
-  ➙ ${prefix}twitter [url]
-  ➙ ${prefix}twittermp3 [url]
-  ➙ ${prefix}ytmp3 [url]
-  ➙ ${prefix}ytmp4 [url]
-  ➙ ${prefix}getmusic [query]
-  ➙ ${prefix}getvideo [query
+  ➙ ${prefix}tiktoknowm [رابط]
+  ➙ ${prefix}tiktokwm [رابط]
+  ➙ ${prefix}tiktokmp3 [رابط]
+  ➙ ${prefix}instagram [رابط]
+  ➙ ${prefix}ig2 [رابط]
+  ➙ ${prefix}igreels [رابط]
+  ➙ ${prefix}igtv [رابط]
+  ➙ ${prefix}twitter [رابط]
+  ➙ ${prefix}twittermp3 [رابط]
+  ➙ ${prefix}ytmp3 [رابط]
+  ➙ ${prefix}ytmp4 [رابط]
+  ➙ ${prefix}getmusic [استفسار]
+  ➙ ${prefix}getvideo [استفسار
   `
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
@@ -2655,11 +2655,11 @@ case 'downloadmenu': {
                             hydratedContentText: okemenu,
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
-                            hydratedFooterText: `Cheems Bot-MD`,
+                            hydratedFooterText: `NIZOKO-BOT`,
                             hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/imFIX-Wrt3s'
+                                    url: 'https://youtube.com/channel/UCv7mGqNpB-pI3W7VKSut7QQ'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -2675,16 +2675,16 @@ case 'downloadmenu': {
             break 
             case 'searchmenu': {
             	anu = `
-              *Search Menu*
+              *قائمة البحث*
   
-  ➙ ${prefix}play [query]
-  ➙ ${prefix}yts [query]
-  ➙ ${prefix}google [query]
-  ➙ ${prefix}gimage [query]
-  ➙ ${prefix}pinterest [query]
-  ➙ ${prefix}wallpaper [query]
-  ➙ ${prefix}wikimedia [query]
-  ➙ ${prefix}ytsearch [query]
+  ➙ ${prefix}play [استفسار]
+  ➙ ${prefix}yts [استفسار]
+  ➙ ${prefix}google [استفسار]
+  ➙ ${prefix}gimage [استفسار]
+  ➙ ${prefix}pinterest [استفسار]
+  ➙ ${prefix}wallpaper [استفسار]
+  ➙ ${prefix}wikimedia [استفسار]
+  ➙ ${prefix}ytsearch [استفسار]
   `
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
@@ -2692,11 +2692,11 @@ case 'downloadmenu': {
                             hydratedContentText: anu,
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
-                            hydratedFooterText: `Cheems Bot-MD`,
+                            hydratedFooterText: `NIZOKO-BOT`,
                             hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/imFIX-Wrt3s'
+                                    url: 'https://youtube.com/channel/UCv7mGqNpB-pI3W7VKSut7QQ'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -2712,7 +2712,7 @@ case 'downloadmenu': {
 break
 case 'randommenu': {
 	anu = `
-	*Random Menu*
+	*قائمة عشوائية*
   
   ➙ ${prefix}coffee
   ➙ ${prefix}couplepp
@@ -2723,11 +2723,11 @@ case 'randommenu': {
                             hydratedContentText: anu,
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
-                            hydratedFooterText: `Cheems Bot-MD`,
+                            hydratedFooterText: `NIZOKO-BOT`,
                             hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/imFIX-Wrt3s'
+                                    url: 'https://youtube.com/channel/UCv7mGqNpB-pI3W7VKSut7QQ'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -2743,11 +2743,11 @@ case 'randommenu': {
 break
 case 'funmenu': {
 	anu = `
-	*Fun Menu*
+	*قائمة المرح*
   
   ➙ ${prefix}couple
   ➙ ${prefix}mysoulmate
-  ➙ ${prefix}math [mode] 
+  ➙ ${prefix}math [الوضع] 
   `
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
@@ -2755,11 +2755,11 @@ case 'funmenu': {
                             hydratedContentText: anu,
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
-                            hydratedFooterText: `Cheems Bot-MD`,
+                            hydratedFooterText: `NIZOKO-BOT`,
                             hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/imFIX-Wrt3s'
+                                    url: 'https://youtube.com/channel/UCv7mGqNpB-pI3W7VKSut7QQ'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -2775,7 +2775,7 @@ case 'funmenu': {
 break
 case 'voicemenu': {
 	anu = `
-	*Voice Changer Menu*
+	*قائمة مغير الصوت*
 	
   ➙ ${prefix}bass
   ➙ ${prefix}blown
@@ -2795,11 +2795,11 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             hydratedContentText: anu,
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
-                            hydratedFooterText: `Cheems Bot-MD`,
+                            hydratedFooterText: `NIZOKO-BOT`,
                             hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/imFIX-Wrt3s'
+                                    url: 'https://youtube.com/channel/UCv7mGqNpB-pI3W7VKSut7QQ'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -2815,7 +2815,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 break
 case 'religionmenukdksoejdjj': {
 	anu = `
-	*Religion Menu*
+	*قائمة الدين*
 	
      (Islamic)
   ➙ ${prefix}iqra
@@ -2829,11 +2829,11 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             hydratedContentText: anu,
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
-                            hydratedFooterText: `Cheems Bot-MD`,
+                            hydratedFooterText: `NIZOKO-BOT`,
                             hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/imFIX-Wrt3s'
+                                    url: 'https://youtube.com/channel/UCv7mGqNpB-pI3W7VKSut7QQ'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -2849,7 +2849,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 break
 case 'horoscopemenukcodk': {
 	anu = `
-	*Horoscope Menu*
+	*قائمة الأبراج*
   
   ➙ ${prefix}hockeynumber
   ➙ ${prefix}dreammeaning
@@ -2887,11 +2887,11 @@ case 'horoscopemenukcodk': {
                             hydratedContentText: anu,
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
-                            hydratedFooterText: `Cheems Bot-MD`,
+                            hydratedFooterText: `NIZOKO-BOT`,
                             hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/imFIX-Wrt3s'
+                                    url: 'https://youtube.com/channel/UCv7mGqNpB-pI3W7VKSut7QQ'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -2907,7 +2907,7 @@ case 'horoscopemenukcodk': {
 break
 case 'convertmenu': {
 	anu = `
-	*Convert Menu*
+	*القائمة لتحويل*
   
   ➙ ${prefix}toimage
   ➙ ${prefix}removebg
@@ -2925,11 +2925,11 @@ case 'convertmenu': {
                             hydratedContentText: anu,
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
-                            hydratedFooterText: `Cheems Bot-MD`,
+                            hydratedFooterText: `NIZOKO-BOT`,
                             hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/imFIX-Wrt3s'
+                                    url: 'https://youtube.com/channel/UCv7mGqNpB-pI3W7VKSut7QQ'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -2945,7 +2945,7 @@ case 'convertmenu': {
 break
 case 'nocategorymenu': {
 	anu = `
-	*Misc Menu*
+	*قائمة متنوعة*
   
   ➙ ${prefix}ping
   ➙ ${prefix}owner
@@ -2957,7 +2957,7 @@ case 'nocategorymenu': {
   ➙ ${prefix}listpc
   ➙ ${prefix}listgc
   ➙ ${prefix}listonline
-  ➙ ${prefix}report (report bug to owner)
+  ➙ ${prefix}report (إذا توجه مشكيل اكتب report. واكتب مشكيل التي تعني منه )
   `
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
@@ -2965,11 +2965,11 @@ case 'nocategorymenu': {
                             hydratedContentText: anu,
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
-                            hydratedFooterText: `Cheems Bot-MD`,
+                            hydratedFooterText: `NIZOKO-BOT`,
                             hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/imFIX-Wrt3s'
+                                    url: 'https://youtube.com/channel/UCv7mGqNpB-pI3W7VKSut7QQ'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -3002,11 +3002,11 @@ case 'databasemenu': {
                             hydratedContentText: anu,
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
-                            hydratedFooterText: `Cheems Bot-MD`,
+                            hydratedFooterText: `NIZOKO-BOT`,
                             hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/imFIX-Wrt3s'
+                                    url: 'https://youtube.com/channel/UCv7mGqNpB-pI3W7VKSut7QQ'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -3024,9 +3024,9 @@ case 'anonymouschatmenu': {
 	anu = `
 	*قائمة مجهولة*
 	
-  ➙ ${prefix}start ( Start Chat )
-  ➙ ${prefix}next ( Next user )
-  ➙ ${prefix}stop ( stop Anonymous chat )
+  ➙ ${prefix}start ( ابدأ الدردشة )
+  ➙ ${prefix}next ( المستخدم التالي)
+  ➙ ${prefix}stop ( وقف الدردشة المجهولة )
 	`
 	  const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
@@ -3034,11 +3034,11 @@ case 'anonymouschatmenu': {
                             hydratedContentText: anu,
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
-                            hydratedFooterText: `Cheems Bot-MD`,
+                            hydratedFooterText: `NIZOKO-BOT`,
                             hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/imFIX-Wrt3s'
+                                    url: 'https://youtube.com/channel/UCv7mGqNpB-pI3W7VKSut7QQ'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -3066,11 +3066,11 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             hydratedContentText: anu,
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
-                            hydratedFooterText: `Cheems Bot-MD`,
+                            hydratedFooterText: `NIZOKO-BOT`,
                             hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/imFIX-Wrt3s'
+                                    url: 'https://youtube.com/channel/UCv7mGqNpB-pI3W7VKSut7QQ'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -3103,7 +3103,7 @@ break
                             hydratedContentText: anu,
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
-                            hydratedFooterText: `~NIZOKO:BOT`,
+                            hydratedFooterText: `~NIZOKO-BOT`,
                             hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'YouTube📍',
@@ -3244,7 +3244,7 @@ break
                             hydratedContentText: anu,
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
-                            hydratedFooterText: `NIZOKO:BOT`,
+                            hydratedFooterText: `NIZOKO-BOT`,
                             hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'YouTube📍',
