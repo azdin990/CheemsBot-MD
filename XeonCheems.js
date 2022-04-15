@@ -27,13 +27,13 @@ const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, 
 let { addLevelingId, addLevelingLevel, addLevelingXp, getLevelingId, getLevelingLevel, getLevelingXp } = require("./lib/lvlfunction")
 const speedofbot = require("performance-now")
 
-//[إبهام]\\
+//[thumb]\\
 let xeon = fs.readFileSync('./XeonMedia/cheemspic.jpg')
 
-//[قاعدة البيانات]\\
+//[database]\\
 const antilink = JSON.parse(fs.readFileSync('./database/antilink.json'))
 
-//[قارئ قاعدة البيانات]\\
+//[database reader]\\
 global.db = JSON.parse(fs.readFileSync('./src/database.json'))
 if (global.db) global.db = {
     sticker: {},
@@ -98,7 +98,7 @@ var sDisplay = s > 0 ? s + (s == 1 ? " second" : " Second") : "";
 return dDisplay + hDisplay + mDisplay + sDisplay;
 }
 	
-//[هدف]\\
+//[target]\\
 	const reply = (teks) => {
             XeonBotInc.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": ` ${global.botnma}`,"body": ` Join Bot's Official GC`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./XeonMedia/cheemspic.jpg`),"sourceUrl": "https://chat.whatsapp.com/HYj9wu5Jrv6CROxyeQbHoS"}}}, { quoted: m})
         }
@@ -168,7 +168,7 @@ const levelRole = getLevelingLevel(m.sender)
 	role = 'جيد في اللعبة'
 	  }
 	
-//[أنتلينك]\\
+//[Antilink]\\
 	if (isAntiLink) 
 if (budy.includes('https://chat.whatsapp.com/')) {
                if (!m.key.fromMe) {
@@ -190,16 +190,16 @@ if (budy.includes('https://chat.whatsapp.com/')) {
         XeonBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
         }
         }
-//[الدردشة الصامتة]\\
+//[mute chat]\\
       if (db.chats[m.chat].mute && !isAdmins && !isCreator) {
       return
       }
-//[كتابة قاعدة البيانات كل 1 دقيقة]\\
+//[write database every 1min]\\
 	setInterval(() => {
             fs.writeFileSync('./src/database.json', JSON.stringify(global.db, null, 2))
         }, 60 * 1000)
 
-//[إعادة تعيين الحد كل 12 ساعة]\\
+//[reset limit every 12hrs]\\
         let cron = require('node-cron')
         cron.schedule('00 12 * * *', () => {
             let user = Object.keys(global.db.users)
@@ -211,7 +211,7 @@ if (budy.includes('https://chat.whatsapp.com/')) {
             timezone: "Asia/Kolkata"
         })
 	    
-//[تستجيب كمد بوسائل الإعلام]\\
+//[respond cmd with media]\\
         if (isMedia && m.msg.fileSha256 && (m.msg.fileSha256.toString('base64') in global.db.sticker)) {
         let hash = global.db.sticker[m.msg.fileSha256.toString('base64')]
         let { text, mentionedJid } = hash
@@ -243,7 +243,7 @@ if (budy.includes('https://chat.whatsapp.com/')) {
             }
             let isWin = room.terjawab.length === room.terjawab.filter(v => v).length
             let caption = `
-Answer the following questions :\n${room.soal}\n\n\nهنالك ${room.jawaban.length} Answer ${room.jawaban.find(v => v.includes(' ')) ? `(بعض الإجابات لها مسافات)` : ''}
+Answer the following questions :\n${room.soal}\n\n\nهنالك ${room.jawaban.length} إجابه ${room.jawaban.تجد(v => v.includes(' ')) ? `(بعض الإجابات لها مسافات)` : ''}
 ${isWin ? `All Answers Answered` : isSurender ? 'Give up!' : ''}
 ${Array.from(room.jawaban, (jawaban, index) => {
         return isSurender || room.terjawab[index] ? `(${index + 1}) ${jawaban} ${room.terjawab[index] ? '@' + room.terjawab[index].split('@')[0] : ''}`.trim() : false
@@ -257,7 +257,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             kuis = true
             jawaban = tebaklagu[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak lagu', buttonText: { displayText: 'تخمين الموسيقى' }, type: 1 }], `🎮 تخمين الأغنية 🎮\n\n🎉اجابة صحيحة\n\nتريد أن تلعب مرة أخرى? اضغط على الزر أدناه`, XeonBotInc.user.name, m)
+                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak lagu', buttonText: { displayText: 'Guess The Music' }, type: 1 }], `🎮 تخمين الأغنية 🎮\n\n🎉اجابة صحيحة\n\nتريد أن تلعب مرة أخرى? اضغط على الزر أدناه`, XeonBotInc.user.name, m)
                 delete tebaklagu[m.sender.split('@')[0]]
             } else reply('*إجابة خاطئة!*')
         }
@@ -275,7 +275,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             kuis = true
             jawaban = tebakgambar[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak gambar', buttonText: { displayText: 'تخمين الصورة' }, type: 1 }], `🎮 تخمين الصورة 🎮\n\n🎉اجابة صحيحة\n\nتريد أن تلعب مرة أخرى? اضغط على الزر أدناه`, XeonBotInc.user.name, m)
+                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak gambar', buttonText: { displayText: 'Guess The Picture' }, type: 1 }], `🎮 تخمين الصورة 🎮\n\n🎉اجابة صحيحة\n\nتريد أن تلعب مرة أخرى? اضغط على الزر أدناه`, XeonBotInc.user.name, m)
                 delete tebakgambar[m.sender.split('@')[0]]
             } else reply('*إجابة خاطئة!*')
         }
@@ -343,10 +343,10 @@ ${Array.from(room.jawaban, (jawaban, index) => {
 	    }
 	    if (!isSurrender && 1 > (ok = room.game.turn(m.sender === room.game.playerO, parseInt(m.text) - 1))) {
 	    reply({
-	    '-3': 'Game has ended',
-	    '-2': 'Invalid',
-	    '-1': 'Invalid Position',
-	    0: 'Invalid Position',
+	    '-3': 'انتهت اللعبة',
+	    '-2': 'غير صالح',
+	    '-1': 'الوظيفة غير صحيحة',
+	    0: 'الوظيفة غير صحيحة',
 	    }[ok])
 	    return !0
 	    }
@@ -413,7 +413,7 @@ Type *give up* to surrender and admit defeat`
 @${roof.p.split`@`[0]} and 
 @${roof.p2.split`@`[0]}
 
-Please choose a suit in the respective chat"
+الرجاء اختيار بدلة في الدردشة المعنية"
 click https://wa.me/${botNumber.split`@`[0]}`, m, { mentions: [roof.p, roof.p2] })
 	    if (!roof.pilih) XeonBotInc.sendText(roof.p, `Please select \n\nRock🗿\nPaper📄\nScissors✂️`, m)
 	    if (!roof.pilih2) XeonBotInc.sendText(roof.p2, `Please select \n\nRock🗿\nPaper📄\nScissor✂️`, m)
@@ -554,7 +554,7 @@ Type *give up* to surrender and admit defeat`
             delete this.game
             XeonBotInc.sendText(m.chat, `Successfully delete the TicTacToe session`, m)
             } else if (!this.game) {
-            reply(`TicTacToe Session🎮 there is not any`)
+            reply(`جلسة TicTacToe🎮 لم يكن هناك أي`)
             } else throw '?'
             } catch (e) {
             reply('error')
@@ -737,7 +737,7 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
                 let { genMath, modes } = require('./src/math')
                 if (!text) throw `Mode: ${Object.keys(modes).join(' | ')}\nExample: ${prefix}math medium`
                 let result = await genMath(text.toLowerCase())
-                XeonBotInc.sendText(m.chat, `*What is the result of: ${result.soal.toLowerCase()}*?\n\nTime: ${(result.waktu / 1000).toFixed(2)} seconds`, m).then(() => {
+                XeonBotInc.sendText(m.chat, `*ما هي نتيجة: ${result.soal.toLowerCase()}*?\n\nوقت: ${(result.waktu / 1000).toFixed(2)} ثواني`, m).then(() => {
                     kuismath[m.sender.split('@')[0]] = result.jawaban
                 })
                 await sleep(result.waktu)
@@ -753,7 +753,7 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
             let member = participants.map(u => u.id)
             let me = m.sender
             let jodoh = member[Math.floor(Math.random() * member.length)]
-            let jawab = `👫Your match is
+            let jawab = `👫المباراة الخاصة بك هي
 
 @${me.split('@')[0]} ❤️ @${jodoh.split('@')[0]}`
             let ments = [me, jodoh]
@@ -878,7 +878,7 @@ try{
   } catch {
  var pic = 'https://i.ibb.co/Tq7d7TZ/age-hananta-495-photo.png'
   }
-let ingfo = `*G R O U P  I N F O*\n\n*Name :* ${groupName}\n*ID Group :* ${m.chat}\n*Made :* ${moment(`${groupMetadata.creation}` * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}\n*Group Owner:* @${groupMetadata.owner.split('@')[0]}\n*Number Of Admins :* ${groupAdmins.length}\n*Number Of Participants :* ${participants.length}\n*Desc :* \n${groupMetadata.desc}`
+let ingfo = `*G R O U P  I N F O*\n\n*Name :* ${groupName}\n*هوية المجموعة :* ${m.chat}\n*Made :* ${moment(`${groupMetadata.creation}` * 1000).tz('Morocco/Africa').format('DD/MM/YYYY HH:mm:ss')}\n*مالك المجموعة:* @${groupMetadata.owner.split('@')[0]}\n*عدد المسؤولين :* ${groupAdmins.length}\n*عدد المشاركين :* ${participants.length}\n*Desc :* \n${groupMetadata.desc}`
 ds = await getBuffer(pic)
 XeonBotInc.sendMessage(m.chat, { image: ds,caption: ingfo, mentions: [groupMetadata.owner] }, { quoted: m})
 break
@@ -889,7 +889,7 @@ break
 let teks = `══✪〘 *👥 وضع علامة على الكل* 〙✪══
  
  ➲ *رسالة : ${q ? q : 'blank'}*\n\n`
-                for (let mem of participants) {
+                for (اسمح لذكرى المشاركين) {
                 teks += `⭔ @${mem.id.split('@')[0]}\n`
                 }
                 XeonBotInc.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: m })
@@ -916,9 +916,9 @@ let teks = `══✪〘 *👥 وضع علامة على الكل* 〙✪══
 	    break
                case 'vote': {
             if (!m.isGroup) throw mess.group
-            if (m.chat in vote) throw `_There are still votes in this chat!_\n\n*${prefix}deletevote* - to delete votes`
-            if (!text) throw `Enter Reason for Vote, Example: *${prefix + command} Owner is handsome*`
-            reply(`Voting starts!\n\n*${prefix}upvote* - for yes\n*${prefix}devote* - for no\n*${prefix}checkvote* - to check the votes\n*${prefix}deletevote* - to delete vote`)
+            if (m.chat in vote) throw `_لا تزال هناك أصوات في هذه الدردشة!_\n\n*${prefix}deletevote* - لحذف الأصوات`
+            if (!text) throw `أدخل سبب التصويت, مثال: *${prefix + command} المالك وسيم*`
+            reply(`يبدأ التصويت!\n\n*${prefix}upvote* - نعم\n*${prefix}devote* - لا\n*${prefix}التصويت* - للتحقق من الاصوات\n*${prefix}deletevote* - لحذف التصويت`)
             vote[m.chat] = [q, [], []]
             await sleep(1000)
             upvote = vote[m.chat][1]
@@ -943,8 +943,8 @@ let teks = `══✪〘 *👥 وضع علامة على الكل* 〙✪══
 
 *${prefix}deletevote* - لحذف الأصوات`
 let buttonsVote = [
-  {buttonId: `${prefix}upvote`, buttonText: {displayText: '👍🏻Up-Vote👍🏻'}, type: 1},
-  {buttonId: `${prefix}devote`, buttonText: {displayText: '👎🏻De-Vote👎🏻'}, type: 1}
+  {buttonId: `${prefix}upvote`, buttonText: {displayText: '👍🏻التصويت👍🏻'}, type: 1},
+  {buttonId: `${prefix}devote`, buttonText: {displayText: '👎🏻إلغاء التصويت👎🏻'}, type: 1}
 ]
 
             let buttonMessageVote = {
@@ -958,13 +958,13 @@ let buttonsVote = [
             break
                case 'upvote': {
             if (!m.isGroup) throw mess.group
-            if (!(m.chat in vote)) throw `_*no voting in this group!*_\n\n*Type ${prefix}vote* - to start voting`
+            if (!(m.chat in vote)) throw `_*لا يوجد تصويت في هذه المجموعة!*_\n\n*يكتب ${prefix}vote* - لبدء التصويت`
             isVote = vote[m.chat][1].concat(vote[m.chat][2])
             wasVote = isVote.includes(m.sender)
-            if (wasVote) throw 'You have Voted'
+            if (wasVote) throw 'لقد قمت بالتصويت'
             vote[m.chat][1].push(m.sender)
             menvote = vote[m.chat][1].concat(vote[m.chat][2])
-            teks_vote = `*「 VOTE 」*
+            teks_vote = `*「 تصويت 」*
 
 *سبب:* ${vote[m.chat][0]}
 
@@ -984,8 +984,8 @@ ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
 
 *${prefix}hapusvote* - لحذف الأصوات`
             let buttonsUpvote = [
-              {buttonId: `${prefix}upvote`, buttonText: {displayText: '👍🏻Up-Vote👍🏻'}, type: 1},
-              {buttonId: `${prefix}devote`, buttonText: {displayText: '👎🏻De-Vote👎🏻'}, type: 1}
+              {buttonId: `${prefix}upvote`, buttonText: {displayText: '👍🏻التصويت👍🏻'}, type: 1},
+              {buttonId: `${prefix}devote`, buttonText: {displayText: '👎🏻إلغاء التصويت👎🏻'}, type: 1}
             ]
 
             let buttonMessageUpvote = {
@@ -1008,26 +1008,26 @@ ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
             menvote = vote[m.chat][1].concat(vote[m.chat][2])
             teks_vote = `*「 VOTE 」*
 
-*Reason:* ${vote[m.chat][0]}
+*سبب:* ${vote[m.chat][0]}
 
-┌〔 UPVOTE 〕
+┌〔 التصويت 〕
  
 ├ Total: ${vote[m.chat][1].length}
 ${vote[m.chat][1].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
  
 └────
 
-┌〔 DEVOTE 〕
+┌〔 ديفو 〕
  
 ├ Total: ${vote[m.chat][2].length}
 ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
  
 └────
 
-*${prefix}hapusvote* - to delete votes`
+*${prefix}hapusvote* - لحذف الأصوات`
             let buttonsDevote = [
-              {buttonId: `${prefix}upvote`, buttonText: {displayText: '👍🏻Up-Vote👍🏻'}, type: 1},
-              {buttonId: `${prefix}devote`, buttonText: {displayText: '👎🏻De-Vote👎🏻'}, type: 1}
+              {buttonId: `${prefix}upvote`, buttonText: {displayText: '👍🏻التصويت👍🏻'}, type: 1},
+              {buttonId: `${prefix}devote`, buttonText: {displayText: '👎🏻إلغاء التصويت👎🏻'}, type: 1}
             ]
 
             let buttonMessageDevote = {
@@ -1041,28 +1041,28 @@ ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
 	}
             break
                  
-case 'cekvote':
+قضية 'cekvote':
 if (!m.isGroup) throw mess.group
-if (!(m.chat in vote)) throw `_*no voting in this group!*_\n\n*${prefix}vote* - to start voting`
-teks_vote = `*「 VOTE 」*
+if (!(m.chat in vote)) throw `_*لا يوجد تصويت في هذه المجموعة!*_\n\n*${prefix}vote* - لبدء التصويت`
+teks_vote = `*「 تصويت 」*
 
 *Reason:* ${vote[m.chat][0]}
 
-┌〔 UPVOTE 〕
+┌〔 التصويت 〕
  
 ├ Total: ${upvote.length}
 ${vote[m.chat][1].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
  
 └────
 
-┌〔 DEVOTE 〕
+┌〔 ديفو 〕
  
 ├ Total: ${devote.length}
 ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
  
 └────
 
-*${prefix}hapusvote* - to delete votes
+*${prefix}hapusvote* - لحذف الأصوات
 
 
 ©${XeonBotInc.user.id}
@@ -1071,9 +1071,9 @@ XeonBotInc.sendTextWithMentions(m.chat, teks_vote, m)
 break
 		case 'deletevote': case'delvote': case 'hapusvote': {
             if (!m.isGroup) throw mess.group
-            if (!(m.chat in vote)) throw `_*tidak ada voting digrup ini!*_\n\n*${prefix}vote* - to start voting`
+            if (!(m.chat in vote)) throw `_*تيداك آدا التصويت حفر اني!*_\n\n*${prefix}vote* - لبدء التصويت`
             delete vote[m.chat]
-            reply('Successfully Deleted Vote Session In This Group')
+            reply('تم حذف جلسة التصويت في هذه المجموعة بنجاح')
 	    }
             break
                case 'group': case 'grup': {
@@ -1081,13 +1081,13 @@ break
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
                 if (args[0] === 'close'){
-                    await XeonBotInc.groupSettingUpdate(m.chat, 'announcement').then((res) => reply(`Successful Closing The Group`)).catch((err) => reply(jsonformat(err)))
+                    await XeonBotInc.groupSettingUpdate(m.chat, 'announcement').then((res) => reply(`تم فتح المجموعة بنجاح`)).catch((err) => reply(jsonformat(err)))
                 } else if (args[0] === 'open'){
-                    await XeonBotInc.groupSettingUpdate(m.chat, 'not_announcement').then((res) => reply(`Successful Opening The Group`)).catch((err) => reply(jsonformat(err)))
+                    await XeonBotInc.groupSettingUpdate(m.chat, 'not_announcement').then((res) => reply(`اغلاق المجموعة بنجاح`)).catch((err) => reply(jsonformat(err)))
                 } else {
                 let buttons = [
-                        { buttonId: 'group open', buttonText: { displayText: '⭕Open⭕' }, type: 1 },
-                        { buttonId: 'group close', buttonText: { displayText: '🚫Close🚫' }, type: 1 }
+                        { buttonId: 'group open', buttonText: { displayText: '⭕يفتح⭕' }, type: 1 },
+                        { buttonId: 'group close', buttonText: { displayText: '🚫يغلق🚫' }, type: 1 }
                     ]
                     await XeonBotInc.sendButtonText(m.chat, buttons, `Group Mode`, XeonBotInc.user.name, m)
 
@@ -1099,13 +1099,13 @@ break
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
              if (args[0] === 'open'){
-                await XeonBotInc.groupSettingUpdate(m.chat, 'unlocked').then((res) => reply(`Successfully Opened Edit Group Info`)).catch((err) => reply(jsonformat(err)))
+                await XeonBotInc.groupSettingUpdate(m.chat, 'unlocked').then((res) => reply(`تم فتح تحرير معلومات المجموعة بنجاح`)).catch((err) => reply(jsonformat(err)))
              } else if (args[0] === 'close'){
-                await XeonBotInc.groupSettingUpdate(m.chat, 'locked').then((res) => reply(`Successfully Close Edit Group Info`)).catch((err) => reply(jsonformat(err)))
+                await XeonBotInc.groupSettingUpdate(m.chat, 'locked').then((res) => reply(`أغلق تحرير معلومات المجموعة بنجاح`)).catch((err) => reply(jsonformat(err)))
              } else {
              let buttons = [
-                        { buttonId: 'editinfo open', buttonText: { displayText: '⭕Open⭕' }, type: 1 },
-                        { buttonId: 'editinfo close', buttonText: { displayText: '🚫Close🚫' }, type: 1 }
+                        { buttonId: 'editinfo open', buttonText: { displayText: '⭕يفتح⭕' }, type: 1 },
+                        { buttonId: 'editinfo close', buttonText: { displayText: '🚫يغلق🚫' }, type: 1 }
                     ]
                     await XeonBotInc.sendButtonText(m.chat, buttons, `Mode Edit Info`, XeonBotInc.user.name, m)
 
@@ -1113,15 +1113,15 @@ break
             }
             break
 case 'antilink':
-	        if (!m.isGroup) return reply(`This feature only be used in group`)
-			if (!isAdmins) return reply(`This feature could be used by admin only`)
-			if (!isBotAdmins) return reply(`Bot must be admin first`)
+	        if (!m.isGroup) return reply(هذه الميزة تستخدم فقط في المجموعة`)
+			if (!isAdmins) return reply(`يمكن استخدام هذه الميزة من قبل المسؤول فقط`)
+			if (!isBotAdmins) return reply(`يجب أن يكون البوت هو المسؤول أولاً`)
 					if (args[0] === 'on') {
-						if (isAntiLink) return reply('Already Activated')
+						if (isAntiLink) return reply('بالفعل تنشيط')
 						antilink.push(m.chat)
 						fs.writeFileSync('./database/antilink.json', JSON.stringify(antilink))
 						reply('Successfully activated the antilink feature')
-						XeonBotInc.sendMessage(m.chat,  {text: `ALLERT!!! This group has been installed anti-link\nIf you violate then I will kick`})
+						XeonBotInc.sendMessage(m.chat,  {text: `ALLERT!!! تم تثبيت هذه المجموعة مانع روابط \nإذا انتهكت سأركل`})
 					} else if (args[0] === 'off') {
 						if (!isAntiLink) return reply('already deactivated')
 						var ini = antilink.indexOf(m.chat)
@@ -1166,8 +1166,8 @@ case 'antilink':
                 reply(`${XeonBotInc.user.name} has been unmuted in this group!`)
                 } else {
                  let buttons = [
-                        { buttonId: 'mute on', buttonText: { displayText: '⭕On⭕' }, type: 1 },
-                        { buttonId: 'mute off', buttonText: { displayText: '❌Off❌' }, type: 1 }
+                        { buttonId: 'mute on', buttonText: { displayText: '⭕تشغيل⭕' }, type: 1 },
+                        { buttonId: 'mute off', buttonText: { displayText: '❌إيقاف❌' }, type: 1 }
                     ]
                     await XeonBotInc.sendButtonText(m.chat, buttons, `Mute Bot`, XeonBotInc.user.name, m)
                 }
@@ -1210,21 +1210,21 @@ case 'antilink':
                     let btn = [{
                                 urlButton: {
                                     displayText: 'YouTube📍',
-                                    url: 'https://github.com/DGXeon/CheemsBot-MD'
+                                    url: 'https://youtube.com/channel/UCv7mGqNpB-pI3W7VKSut7QQ'
                                 }
                             }, {
                                 callButton: {
-                                    displayText: 'Owner Number👤',
-                                    phoneNumber: '+91 690-9137-213'
+                                    displayText: '👤رقم المطور',
+                                    phoneNumber: '+212 641-427490'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '📶Bot Status📶',
+                                    displayText: '📶حالة البوت📶',
                                     id: 'ping'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '👤Owner👤',
+                                    displayText: '👤المطور👤',
                                     id: 'owner'
                                 }  
                             }, {
@@ -1249,12 +1249,12 @@ case 'antilink':
 		    await sleep(1500)
 		    let btn = [{
                                 urlButton: {
-                                    displayText: 'Script🔖',
-                                    url: 'https://github.com/DGXeon/CheemsBot-MD'
+                                    displayText: 'انستغرام🔖',
+                                    url: 'https://instagram.com/azdi_n_1?=nametag'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '👤Owner👤',
+                                    displayText: '👤مطور👤',
                                     id: 'owner'
                                 }
                             }]
@@ -1266,43 +1266,42 @@ case 'antilink':
             }
             break
             case 'chatinfo': {
-                if (!m.quoted) reply('Reply to mesaage')
+                if (!m.quoted) reply('الرد على الرسالة')
                 let msg = await m.getQuotedObj()
-                if (!m.quoted.isBaileys) throw 'The message was not sent by a bot!'
+                if (!m.quoted.isBaileys) throw 'لم يتم إرسال الرسالة بواسطة روبوت!'
                 let teks = ''
                 for (let i of msg.userReceipt) {
                     let read = i.readTimestamp
                     let unread = i.receiptTimestamp
                     let waktu = read ? read : unread
                     teks += `⭔ @${i.userJid.split('@')[0]}\n`
-                    teks += ` ┗━⭔ *Time :* ${moment(waktu * 1000).format('DD/MM/YY HH:mm:ss')} ⭔ *Status :* ${read ? 'Read' : 'Unread'}\n\n`
+                    teks += ` ┗━⭔ *وقت :* ${moment(waktu * 1000).format('DD/MM/YY HH:mm:ss')} ⭔ *Status :* ${read ? 'Read' : 'Unread'}\n\n`
                 }
                 XeonBotInc.sendTextWithMentions(m.chat, teks, m)
             }
             break
             case 'q': case 'quoted': {
-		if (!m.quoted) return reply('Reply Message!!')
-		let wokwol = await XeonBotInc.serializeM(await m.getQuotedObj())
-		if (!wokwol.quoted) return reply('The message you replied to does not contain a reply')
+		if (!m.quoted) return reply('رسالة الرد!!')
+		let wokwol = await XeonBotInc.serializeM(await m.getQuot')
 		await wokwol.quoted.copyNForward(m.chat, true)
             }
 	    break
             case 'listpc': {
                  let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v.id)
-                 let teks = `⬣ *PERSONAL CHAT LIST*\n\nTotal Chat : ${anu.length} Chat\n\n`
+                 let teks = `⬣ *قائمة الدردشة الشخصية*\n\nإجمالي الدردشة : ${anu.length} محادثة\n\n`
                  for (let i of anu) {
                      let nama = store.messages[i].array[0].pushName
-                     teks += `⬡ *Name :* ${nama}\n⬡ *User :* @${i.split('@')[0]}\n⬡ *Chat :* https://wa.me/${i.split('@')[0]}\n\n────────────────────────\n\n`
+                     teks += `⬡ *اسم :* ${nama}\n⬡ *User :* @${i.split('@')[0]}\n⬡ *محادثة :* https://wa.me/${i.split('@')[0]}\n\n────────────────────────\n\n`
                  }
                  XeonBotInc.sendTextWithMentions(m.chat, teks, m)
              }
              break
                 case 'listgc': {
                  let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
-                 let teks = `⬣ *GROUP CHAT LIST*\n\nTotal Group : ${anu.length} Group\n\n`
+                 let teks = `⬣ *قائمة الدردشة الجماعية*\n\nمجموع المجموعة : ${anu.length} Group\n\n`
                  for (let i of anu) {
                      let metadata = await XeonBotInc.groupMetadata(i)
-                     teks += `⬡ *Name :* ${metadata.subject}\n⬡ *Owner :* @${metadata.owner.split('@')[0]}\n⬡ *ID :* ${metadata.id}\n⬡ *Made :* ${moment(metadata.creation * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}\n⬡ *Member :* ${metadata.participants.length}\n\n────────────────────────\n\n`
+                     teks += `⬡ *اسم :* ${metadata.subject}\n⬡ *Owner :* @${metadata.owner.split('@')[0]}\n⬡ *ID :* ${metadata.id}\n⬡ *Made :* ${moment(metadata.creation * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}\n⬡ *Member :* ${metadata.participants.length}\n\n────────────────────────\n\n`
                  }
                  XeonBotInc.sendTextWithMentions(m.chat, teks, m)
              }
@@ -1481,9 +1480,9 @@ case 'antilink':
                 google({'query': text}).then(res => {
                 let teks = `Google Search From : ${text}\n\n`
                 for (let g of res) {
-                teks += `⭔ *Title* : ${g.title}\n`
-                teks += `⭔ *Description* : ${g.snippet}\n`
-                teks += `⭔ *Link* : ${g.link}\n\n────────────────────────\n\n`
+                teks += `⭔ *عنوان* : ${g.title}\n`
+                teks += `⭔ *وصف* : ${g.snippet}\n`
+                teks += `⭔ *رابد* : ${g.link}\n\n────────────────────────\n\n`
                 } 
                 reply(teks)
                 })
@@ -1500,9 +1499,9 @@ case 'antilink':
                 ]
                 let buttonMessage = {
                     image: { url: images },
-                    caption: `*-------「 GIMAGE SEARCH 」-------*
-🤠 *Query* : ${text}
-🔗 *Media Url* : ${images}`,
+                    caption: `*-------「 بحث في الصور 」-------*
+🤠 *استفسار* : ${text}
+🔗 *عنوان Url* : ${images}`,
                     footer: XeonBotInc.user.name,
                     buttons: buttons,
                     headerType: 4
@@ -1517,15 +1516,15 @@ case 'antilink':
                 let search = await yts(text)
                 let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
                     ngen = `
-⭔ Title : ${anu.title}
-⭔ Ext : Search
-⭔ ID : ${anu.videoId}
-⭔ Duration : ${anu.timestamp}
-⭔ Viewers : ${anu.views}
-⭔ Uploaded : ${anu.ago}
-⭔ Author : ${anu.author.name}
-⭔ Channel : ${anu.author.url}
-⭔ Description : ${anu.description}
+⭔ عنوان : ${anu.title}
+⭔ تحويلة : Search
+⭔ بطاقة تعريف : ${anu.videoId}
+⭔ مدة : ${anu.timestamp}
+⭔ مشاهدون : ${anu.views}
+⭔ تم الرفع : ${anu.ago}
+⭔ مؤلف : ${anu.author.name}
+⭔ قناة : ${anu.author.url}
+⭔ وصف : ${anu.description}
 `
 message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { upload:   XeonBotInc.waUploadToServer })
                 template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
@@ -1533,19 +1532,19 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                         hydratedTemplate: {
                             imageMessage: message.imageMessage,
                             hydratedContentText: ngen,
-                            hydratedFooterText: `Playing To ${text}`,
+                            hydratedFooterText: `اللعب ل${text}`,
                             hydratedButtons: [{
                                 urlButton: {
-                                    displayText: '🥬Video Source Link🥬',
+                                    displayText: '🥬رابط مصدر الفيديو🥬',
                                     url: `${anu.url}`
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '🎵Audio🎵',
+                                    displayText: '🎵صوتي🎵',
                                     id: `ytmp3 ${anu.url} 320kbps`
                                     }
                                 },{quickReplyButton: {
-                                    displayText: '🎥VIdeo🎥',
+                                    displayText: '🎥فيديو🎥',
                                     id: `ytmp4 ${anu.url} 360p`
                                 }
                             }]
@@ -1557,34 +1556,34 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
             break
 	    case 'ytmp3': case 'ytaudio': {
                 let { yta } = require('./lib/y2mate')
-                if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 320kbps`
+                if (!text) throw `مثال : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 320kbps`
                 let quality = args[1] ? args[1] : '320kbps'
                 let media = await yta(text, quality)
-                if (media.filesize >= 999999) return reply('Audio size is too big '+util.format(media))
-                XeonBotInc.sendImage(m.chat, media.thumb, `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolution : ${args[1] || '320kbps'}`, m)
+                if (media.filesize >= 999999) return reply('حجم الصوت كبير جدًا '+util.format(media))
+                XeonBotInc.sendImage(m.chat, media.thumb, `⭔ عنوان : ${media.title}\n⭔ حجم الملف : ${media.filesizeF}\n⭔ رابط : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolution : ${args[1] || '320kbps'}`, m)
                 XeonBotInc.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
             }
             break
             case 'ytmp4': case 'ytvideo': {
                 let { ytv } = require('./lib/y2mate')
-                if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 360p`
+                if (!text) throw `مثال : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 360p`
                 let quality = args[1] ? args[1] : '360p'
                 let media = await ytv(text, quality)
                 if (media.filesize >= 999999) return reply('Video size is too big '+util.format(media))
-                XeonBotInc.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resololution : ${args[1] || '360p'}` }, { quoted: m })
+                XeonBotInc.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `⭔ عنوان : ${media.title}\n⭔ حجم الملف: ${media.filesizeF}\n⭔ رابط : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resololution : ${args[1] || '360p'}` }, { quoted: m })
             }
             break
 	    case 'getmusic': {
                 let { yta } = require('./lib/y2mate')
-                if (!text) throw `Example : ${prefix + command} 1`
-                if (!m.quoted) return reply('Reply Message')
-                if (!m.quoted.isBaileys) throw `Can only reply to messages from bots`
+                if (!text) throw `مثال : ${prefix + command} 1`
+                if (!m.quoted) return reply('رسالة الرد')
+                if (!m.quoted.isBaileys) throw `يمكن فقط الرد على الرسائل من الروبوتات`
 		let urls = quoted.text.match(new RegExp(/(?:https?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/(?:watch|v|embed|shorts)(?:\.php)?(?:\?.*v=|\/))([a-zA-Z0-9\_-]+)/, 'gi'))
-                if (!urls) throw `Maybe The Message You Replied Does Not Contain Ytsearch Results`
+                if (!urls) throw `ربما لا تحتوي الرسالة التي أجبت عليها على نتائج Ytsearch`
                 let quality = args[1] ? args[1] : '320kbps'
                 let media = await yta(urls[text - 1], quality)
-                if (media.filesize >= 999999) return reply('Audio size is too big '+util.format(media))
-                XeonBotInc.sendImage(m.chat, media.thumb, `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolution : ${args[1] || '320kbps'}`, m)
+                if (media.filesize >= 999999) return reply('حجم الصوت كبير جدًا '+util.format(media))
+                XeonBotInc.sendImage(m.chat, media.thumb, `⭔ عنوان : ${media.title}\n⭔ حجم الملف : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolution : ${args[1] || '320kbps'}`, m)
                 XeonBotInc.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
             }
             break
@@ -1646,7 +1645,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 ]
                 let buttonMessage = {
                     image: { url: result.image[0] },
-                    caption: `⭔ Title : ${result.title}\n⭔ Category : ${result.type}\n⭔ Detail : ${result.source}\n⭔ Media Url : ${result.image[2] || result.image[1] || result.image[0]}`,
+                    caption: `⭔ عنوان : ${result.title}\n⭔ Category : ${result.type}\n⭔ Detail : ${result.source}\n⭔ Media Url : ${result.image[2] || result.image[1] || result.image[0]}`,
                     footer: XeonBotInc.user.name,
                     buttons: buttons,
                     headerType: 4
@@ -1655,7 +1654,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
             }
             break
             case 'wikimedia': {
-                if (!text) throw 'Enter Query Title'
+                if (!text) throw 'أدخل عنوان الاستعلام'
 		let { wikimedia } = require('./lib/scraper')
                 anu = await wikimedia(text)
                 result = anu[Math.floor(Math.random() * anu.length)]
@@ -1792,7 +1791,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 let anu = await fetchJson(api('zenz', '/downloader/tiktok', { url: text }, 'apikey'))
                 let buttons = [
                     {buttonId: `tiktokwm ${text}`, buttonText: {displayText: '💁🏻‍♂️With Watermark🤔'}, type: 1},
-                    {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: '🎵Audio🎵'}, type: 1}
+                    {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: '🎵صوتي🎵'}, type: 1}
                 ]
                 let buttonMessage = {
                     video: { url: anu.result.nowatermark },
@@ -1809,8 +1808,8 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 replay(mess.wait)
                 let anu = await fetchJson(api('zenz', '/downloader/tiktok', { url: text }, 'apikey'))
                 let buttons = [
-                    {buttonId: `tiktoknowm ${text}`, buttonText: {displayText: '🎥Video🎥'}, type: 1},
-                    {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: '🎵Audio🎵'}, type: 1}
+                    {buttonId: `tiktoknowm ${text}`, buttonText: {displayText: '🎥فيديو🎥'}, type: 1},
+                    {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: '🎵صوتي🎵'}, type: 1}
                 ]
                 let buttonMessage = {
                     video: { url: anu.result.watermark },
@@ -1844,14 +1843,14 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
             }
             break
 	        case 'instagram': case 'ig': case 'igdl': {
-                if (!text) throw 'Enter Query Url!'
+                if (!text) throw 'أدخل عنوان URL للاستعلام!'
                 replay(mess.wait)
                 if (/(?:\/p\/|\/reel\/|\/tv\/)([^\s&]+)/.test(isUrl(text)[0])) {
                     let anu = await fetchJson(api('zenz', '/downloader/instagram2', { url: isUrl(text)[0] }, 'apikey'))
-                    for (let media of anu.data) XeonBotInc.sendMedia(m.chat, media, '', `Download Url Instagram From ${isUrl(text)[0]}`, m)
+                    for (let media of anu.data) XeonBotInc.sendMedia(m.chat, media, '', `قم بتنزيل عنوان انستغرام من ${isUrl(text)[0]}`, m)
                 } else if (/\/stories\/([^\s&]+)/.test(isUrl(text)[0])) {
                     let anu = await fetchJson(api('zenz', '/downloader/instastory', { url: isUrl(text)[0] }, 'apikey'))
-                    XeonBotInc.sendMedia(m.chat, anu.media[0].url, '', `Download Url Instagram From ${isUrl(text)[0]}`, m)
+                    XeonBotInc.sendMedia(m.chat, anu.media[0].url, '', `قم بتنزيل عنوان انستغرام من ${isUrl(text)[0]}`, m)
                 }
             }
             break
@@ -1859,7 +1858,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 if (!text) throw 'No Query Title'
                 replay(mess.wait)
                 let anu = await fetchJson(api('zenz', '/downloader/joox', { query: text }, 'apikey'))
-                let msg = await XeonBotInc.sendImage(m.chat, anu.result.img, `⭔ Title : ${anu.result.lagu}\n⭔ Album : ${anu.result.album}\n⭔ Singer : ${anu.result.penyanyi}\n⭔ Publish : ${anu.result.publish}\n⭔ Lyrics :\n${anu.result.lirik.result}`, m)
+                let msg = await XeonBotInc.sendImage(m.chat, anu.result.img, `⭔ عنوان : ${anu.result.lagu}\n⭔ البوم : ${anu.result.album}\n⭔ Singer : ${anu.result.penyanyi}\n⭔ Publish : ${anu.result.publish}\n⭔ Lyrics :\n${anu.result.lirik.result}`, m)
                 XeonBotInc.sendMessage(m.chat, { audio: { url: anu.result.mp4aLink }, mimetype: 'audio/mpeg', fileName: anu.result.lagu+'.m4a' }, { quoted: msg })
             }
             break
@@ -1867,7 +1866,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 if (!text) throw 'No Query Title'
                 replay(mess.wait)
                 let anu = await fetchJson(api('zenz', '/downloader/soundcloud', { url: isUrl(text)[0] }, 'apikey'))
-                let msg = await XeonBotInc.sendImage(m.chat, anu.result.thumb, `⭔ Title : ${anu.result.title}\n⭔ Url : ${isUrl(text)[0]}`)
+                let msg = await XeonBotInc.sendImage(m.chat, anu.result.thumb, `⭔ عنوان : ${anu.result.العنوان}\n⭔ رابط : ${isUrl(text)[0]}`)
                 XeonBotInc.sendMessage(m.chat, { audio: { url: anu.result.url }, mimetype: 'audio/mpeg', fileName: anu.result.title+'.m4a' }, { quoted: msg })
             }
             break
@@ -1876,7 +1875,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 replay(mess.wait)
                 let anu = await fetchJson(api('zenz', '/api/downloader/twitter', { url: text }, 'apikey'))
                 let buttons = [
-                    {buttonId: `twittermp3 ${text}`, buttonText: {displayText: '🎵Audio🎵'}, type: 1}
+                    {buttonId: `twittermp3 ${text}`, buttonText: {displayText: '🎵صوتي🎵'}, type: 1}
                 ]
                 let buttonMessage = {
                     video: { url: anu.result.HD || anu.result.SD },
@@ -1893,7 +1892,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 replay(mess.wait)
                 let anu = await fetchJson(api('zenz', '/api/downloader/twitter', { url: text }, 'apikey'))
                 let buttons = [
-                    {buttonId: `twitter ${text}`, buttonText: {displayText: '🎥Video🎥'}, type: 1}
+                    {buttonId: `twitter ${text}`, buttonText: {displayText: '🎥فيديو🎥'}, type: 1}
                 ]
                 let buttonMessage = {
 		    image: { url: anu.result.thumb },
@@ -1917,7 +1916,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 if (!text) throw 'Enter Query Link!'
                 replay(mess.wait)
                 let anu = await fetchJson(api('zenz', '/api/downloader/pinterestdl', { url: text }, 'apikey'))
-                XeonBotInc.sendMessage(m.chat, { video: { url: anu.result }, caption: `Download From ${text}` }, { quoted: m })
+                XeonBotInc.sendMessage(m.chat, { video: { url: anu.result }, caption: `التحميل من${text}` }, { quoted: m })
             }
             break
 
@@ -1927,18 +1926,18 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
 		let anu = await umma(isUrl(text)[0])
 		if (anu.type == 'video') {
 		    let buttons = [
-                        {buttonId: `ytmp3 ${anu.media[0]} 128kbps`, buttonText: {displayText: '🎵Audio🎵'}, type: 1},
-                        {buttonId: `ytmp4 ${anu.media[0]} 360p`, buttonText: {displayText: '🎥Video🎥'}, type: 1}
+                        {buttonId: `ytmp3 ${anu.media[0]} 128kbps`, buttonText: {displayText: '🎵صوتي🎵'}, type: 1},
+                        {buttonId: `ytmp4 ${anu.media[0]} 360p`, buttonText: {displayText: '🎥فيديو🎥'}, type: 1}
                     ]
 		    let buttonMessage = {
 		        image: { url: anu.author.profilePic },
 			caption: `
-⭔ Title : ${anu.title}
-⭔ Author : ${anu.author.name}
-⭔ Like : ${anu.like}
-⭔ Caption : ${anu.caption}
-⭔ Url : ${anu.media[0]}
-To download media, please click one of the buttons below or enter the ytmp3/ytmp4 command with the url above
+⭔ عنوان : ${anu.title}
+⭔ مؤلف : ${anu.author.name}
+⭔ مثل : ${anu.like}
+⭔ التسمية التوضيحية : ${anu.caption}
+⭔ عنوان : ${anu.media[0]}
+لتنزيل الوسائط, الرجاء النقر فوق أحد الأزرار أدناه أو إدخال الأمر ytmp3 / ytmp4 باستخدام عنوان url أعلاه
 `,
 			footer: XeonBotInc.user.name,
 			buttons,
@@ -1988,7 +1987,7 @@ Available formats : pdf, docx, pptx, xlsx`)
 		}
 		break
 		case 'hadith': case 'hadist': {
-		if (!args[0]) throw `Example:
+		if (!args[0]) throw `مثال:
 ${prefix + command} bukhari 1
 ${prefix + command} abu-daud 1
 
@@ -2111,8 +2110,8 @@ break*/
             break
             case 'listcmd': {
                 let teks = `
-*Hash List*
-Info: *bold* hash is locked
+*قائمة التجزئة*
+معلومات: *bold* hash is locked
 ${Object.entries(global.db.sticker).map(([key, value], index) => `${index + 1}. ${value.locked ? `*${key}*` : key} : ${value.text}`).join('\n')}
 `.trim()
                 XeonBotInc.sendText(m.chat, teks, m, { mentions: Object.values(global.db.sticker).map(x => x.mentionedJid).reduce((a,b) => [...a, ...b], []) })
@@ -2120,7 +2119,7 @@ ${Object.entries(global.db.sticker).map(([key, value], index) => `${index + 1}. 
             break
             case 'lockcmd': {
                 if (!isCreator) throw mess.owner
-                if (!m.quoted) throw 'Reply Message!'
+                if (!m.quoted) throw 'رسالة الرد!'
                 if (!m.quoted.fileSha256) throw 'SHA256 Hash Missing'
                 let hash = m.quoted.fileSha256.toString('base64')
                 if (!(hash in global.db.sticker)) throw 'Hash not found in database'
@@ -2134,17 +2133,17 @@ ${Object.entries(global.db.sticker).map(([key, value], index) => `${index + 1}. 
                 let msgs = global.db.database
                 if (text.toLowerCase() in msgs) throw `'${text}' telah terdaftar di list pesan`
                 msgs[text.toLowerCase()] = quoted.fakeObj
-reply(`Successfully added message in message list as '${text}'
+الرد(`تمت إضافة الرسالة بنجاح في قائمة الرسائل كـ '${text}'
     
-Access with ${prefix}getmsg ${text}
+الوصول مع${prefix}getmsg ${text}
 
-View list of message with ${prefix}listmsg`)
+عرض قائمة الرسائل مع ${prefix}listmsg`)
             }
             break
             case 'getmsg': {
-                if (!text) throw `Example : ${prefix + command} msg name\n\nView message list with ${prefix}listmsg`
+                if (!text) throw `مثال : ${prefix + command} اسم الرسالة\n\nعرض قائمة الرسائل مع ${prefix}listmsg`
                 let msgs = global.db.database
-                if (!(text.toLowerCase() in msgs)) throw `'${text}' not registered in message list`
+                if (!(text.toLowerCase() in msgs)) throw `'${text}' غير مسجل في قائمة الرسائل`
                 XeonBotInc.copyNForward(m.chat, msgs[text.toLowerCase()], true)
             }
             break
@@ -2153,7 +2152,7 @@ View list of message with ${prefix}listmsg`)
 	        let seplit = Object.entries(global.db.database).map(([nama, isi]) => { return { nama, ...isi } })
 		let teks = '「 LIST DATABASE 」\n\n'
 		for (let i of seplit) {
-		    teks += `⬡ *Name :* ${i.nama}\n⬡ *Type :* ${getContentType(i.message).replace(/Message/i, '')}\n────────────────────────\n\n`
+		    teks += `⬡ *اسم :* ${i.nama}\n⬡ *يكتب :* ${getContentType(i.message).replace(/Message/i, '')}\n────────────────────────\n\n`
 	        }
 	        reply(teks)
 	    }
@@ -2170,12 +2169,12 @@ View list of message with ${prefix}listmsg`)
 				this.anonymous = this.anonymous ? this.anonymous : {}
 				let buttons = [{
                                 urlButton: {
-                                    displayText: 'Report Bug🐛',
+                                    displayText: '🐛تقرير الشوائب',
                                     url: 'https://wa.me/916909137213?text=hello+bro+i+found+a+bug+in+your+bot'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '👻Start Anonymous👻',
+                                    displayText: '👻ابدأ مجهول👻',
                                     id: 'start'
                                 }
                             }]
@@ -2433,13 +2432,13 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 
 ❏「 معلومات بوت 」
 
-𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
-𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+سرعة : ${latensie.toFixed(4)} مللي ثانية
+مدة العرض : ${runtime(process.uptime())}
+بوت إسم : ${global.botnma}
+المطور إسم : ${global.ownernma}
+مطور رقم : ${global.owner}
+اسم المضيف : ${os.hostname()}
+برنامج : ${os.platform()}
 
 
 Please Select Button Below
