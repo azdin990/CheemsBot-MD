@@ -22,27 +22,27 @@ global.APIKeys = {
 }
 
 //═══════[modification]════════\\
-global.owner = ['916909137213','6283839980451'] //owner number, u can put multiple owner number, within quotations and seperated by comma.
-global.pemilik = ['916909137213'] //another owner number
-global.premium = ['916909137213'] //premium number
+global.owner = ['21241427490','6283839980451'] //owner number, u can put multiple owner number, within quotations and seperated by comma.
+global.pemilik = ['21241427490'] //another owner number
+global.premium = ['21241427490'] //premium number
 global.pengguna = 'Xeon' //username
-global.botnma = 'Cheems Bot-MD' //bot name
-global.ownernma = '🦄Dream Guy Xeon' //owner name
-global.packname = 'Cheems Bot' //sticker package name
-global.author = 'By Dream Guy Xeon' //sticker author name
+global.botnma = 'ꪶ 𝗡𝗜𝗭𝗢𝗞𝗢 𝐁𝐎𝐓ꫂ' //bot name
+global.ownernma = 'الــغـــࢪبــي' //owner name
+global.packname = 'ꪶ 𝗡𝗜𝗭𝗢𝗞𝗢 𝐁𝐎𝐓ꫂ' //sticker package name
+global.author = '212675945808' //sticker author name
 global.sessionName = 'session' //session name
 global.prefa = ['#','!','/',''] //prefix
 global.sp = '⭔' //design
 global.mess = {
-    success: 'Done ✓',
-    admin: 'This Feature Is Only For Admin!',
-    botAdmin: 'Bot Must Be Admin First!',
-    owner: 'This Feature Is Only For Owner',
-    group: 'Feature Used Only For Groups!',
-    private: 'Features Used Only For Private Chat!',
-    bot: 'This feature in only for the bot number',
-    wait: 'In process...',
-    endLimit: 'Your Daily Limit Has Expired, The Limit Will Be Reset Every 12 Hours',
+    success: '✓تم ',
+    admin: 'هذه الميزة للمشرف فقط!',
+    botAdmin: 'يجب أن يكون البوت مسؤولاً أولاً!',
+    owner: 'هذه الميزة للمالك فقط',
+    group: 'الميزة تستخدم فقط للمجموعات!',
+    private: 'الميزات المستخدمة فقط للدردشة الخاصة!',
+    bot: 'ميزة فقط لرقم البوت',
+    wait: '...تحت المعالجة',
+    endLimit: 'انتهت صلاحية الحد اليومي الخاص بك, The سيتم إعادة تعيين الحد كل 12 ساعة',
 }
 global.limitawal = {
     premium: "Infinity", //premium user limit
