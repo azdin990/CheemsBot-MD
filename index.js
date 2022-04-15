@@ -41,8 +41,8 @@ async function startXeonBotInc() {
     const callerId = json.content[0].attrs['call-creator']
     if (json.content[0].tag == 'offer') {
     let pa7rick = await XeonBotInc.sendContact(callerId, global.owner)
-    XeonBotInc.sendMessage(callerId, { text: `Automatic block system!\nDon't call bot!\nPlease contact the owner to open !`}, { quoted : pa7rick })
-    XeonBotInc.sendMessage(`916909137213@s.whatsapp.net`, {text: `*Report Bot:* Someone Called Bot`})
+    XeonBotInc.sendMessage(callerId, { text: `تم حضرك !\nبسباب إتصل بالبوت!\nيرجى الاتصال بالمطور لفتح !`}, { quoted : pa7rick })
+    XeonBotInc.sendMessage(`916909137213@s.whatsapp.net`, {text: `*الإبلاغ عن بوت:* شخصا ما إتصل بالبوت`})
     await sleep(8000)
     await XeonBotInc.updateBlockStatus(callerId, "block")
     }
@@ -92,7 +92,7 @@ Kon = await getBuffer(`https://hardianto.xyz/api/welcome3?profile=${encodeURICom
 
 Tol = await getBuffer(`https://hardianto.xyz/api/goodbye3?profile=${encodeURIComponent(ppuser)}&name=${encodeURIComponent(nama)}&bg=https://telegra.ph/file/d460e086f9f9bf6b04e17.jpg&namegb=${encodeURIComponent(metadata.subject)}&member=${encodeURIComponent(memb)}`)
                 if (anu.action == 'add') {
-                    XeonBotInc.sendMessage(anu.id, { image: Kon, contextInfo: { mentionedJid: [num] }, caption: `Welcome To ${metadata.subject} @${num.split("@")[0]}
+                    XeonBotInc.sendMessage(anu.id, { image: Kon, contextInfo: { mentionedJid: [num] }, caption: `مرحبا بك في ${metadata.subject} @${num.split("@")[0]}
 
 Description: ${metadata.desc}
 
@@ -178,16 +178,16 @@ I'm not sure if it was a goodbye charm, but it was fun while it lasted 😌✨` 
         const { connection, lastDisconnect } = update	    
         if (connection === 'close') {
         let reason = new Boom(lastDisconnect?.error)?.output?.statusCode
-            if (reason === DisconnectReason.badSession) { console.log(`🦄Bad Session File, Please Delete Session and Scan Again`); process.exit(); }
-            else if (reason === DisconnectReason.connectionClosed) { console.log("🦄Connection closed, Reconnecting...."); startXeonBotInc(); }
-            else if (reason === DisconnectReason.connectionLost) { console.log("🦄Connection Lost from Server, Reconnecting..."); startXeonBotInc(); }
-            else if (reason === DisconnectReason.connectionReplaced) { console.log("🦄Connection Replaced, Another New Session Opened, Please Close Current Session First"); process.exit(); }
-            else if (reason === DisconnectReason.loggedOut) { console.log(`🦄Device Logged Out, Please Delete Session And Scan Again.`); process.exit(); }
-            else if (reason === DisconnectReason.restartRequired) { console.log("🦄Restart Required, Restarting..."); startXeonBotInc(); }
-            else if (reason === DisconnectReason.timedOut) { console.log("🦄Connection TimedOut, Reconnecting..."); startXeonBotInc(); }
-            else { console.log(`Unknown DisconnectReason: ${reason}|${connection}`) }
+            if (reason === DisconnectReason.badSession) { console.log(`ملف جلسة تالف ، يرجى حذف الجلسة والمسح مرة أخرى`); process.exit(); }
+            else if (reason === DisconnectReason.connectionClosed) { console.log(" .... مغلق, إعادة الاتصال"); startXeonBotInc(); }
+            else if (reason === DisconnectReason.connectionLost) { console.log("....انقطع الاتصال من الخادم, جاري إعادة الاتصال "); startXeonBotInc(); }
+            else if (reason === DisconnectReason.connectionReplaced) { console.log("تم استبدال الاتصال, تم افتتاح جلسة جديدة أخرى, الرجاء إغلاق الجلسة الحالية أولاً"); process.exit(); }
+            else if (reason === DisconnectReason.loggedOut) { console.log(`تم تسجيل خروج الجهاز, يرجى حذف الجلسة والمسح مرة أخرى.`); process.exit(); }
+            else if (reason === DisconnectReason.restartRequired) { console.log("...مطلوب إعادة التشغيل, إعادة التشغيل"); startXeonBotInc(); }
+            else if (reason === DisconnectReason.timedOut) { console.log("...انتهت مدة الاتصال, جاري إعادة الاتصال "); startXeonBotInc(); }
+            else { console.log(`DisconnectReason غير معروف: ${reason}|${connection}`) }
         }
-        console.log('🦄Connected...', update)
+        console.log('...متصل ', update)
     })
     
     XeonBotInc.ev.on('creds.update', saveState)
