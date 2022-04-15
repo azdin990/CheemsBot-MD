@@ -96,11 +96,11 @@ Tol = await getBuffer(`https://hardianto.xyz/api/goodbye3?profile=${encodeURICom
 
 Description: ${metadata.desc}
 
-Welcome To Our Comfortable Happy😋, Sometimes Loud😜, Usually Messy🤥, Full Of Love🥰, HOME😌!!`} )
+مرحبًا بكم في سعادتنا المريحة😋, أحيانا بصوت عال😜, عادة فوضوي🤥, مليء بالحب🥰, الصفحة الرئيسية😌!!`} )
                 } else if (anu.action == 'remove') {
                     XeonBotInc.sendMessage(anu.id, { image: Tol, contextInfo: { mentionedJid: [num] }, caption: `@${num.split("@")[0]} Left ${metadata.subject}
 
-I'm not sure if it was a goodbye charm, but it was fun while it lasted 😌✨` })
+لست متأكدًا مما إذا كان سحر الوداع, لكنها كانت ممتعة طالما استمرت 😌✨` })
                 }
             }
         } catch (err) {
